@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "888",
+    "database": "todo_list",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "timezon": "+08:00",
+    "port": 5433
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
