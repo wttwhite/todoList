@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')  //中间件
 
 const models = require('../models')
+const fs = require('fs')
 
 app.use(express.json()) // 处理json数据
 // for parsing application/xwww-form-urlencoded
@@ -102,6 +103,27 @@ app.use('/changeStatus', async (req, res, next) => {
     next(error)
   }
 })
+
+app.all('*', (req, res) => {
+  // let data
+  fs.readFile('../public/index.html', 'utf-8', (err, content) => {
+    if (err) {
+      console.log('We cannot open "index.htm" file.')
+    }
+
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8'
+    })
+
+    res.json(content)
+  })
+  // let data = fs.readFileSync('../public/index.html', 'utf-8')
+  // res.end(data)
+})
+// app.use(express.static('public', {
+//   // 默认后缀
+//   extensions: ['html', 'htm']
+// }))
 
 
 // 1. 所有的错误处理， http status = 500
